@@ -1,0 +1,38 @@
+﻿<Window x:Class="ATM_System.Pages.ConnectionErrorPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATM_System.Pages"
+        mc:Ignorable="d"
+        Title="Connection Error" Height="420" Width="675" ResizeMode="NoResize">
+    <Grid>
+        <TextBlock Text="Hmm... Seems like we are having trouble connecting you to our service." FontSize="25" Padding="55, 30, 40, 0" 
+                   TextWrapping="Wrap"/>
+        <Label Content="We can't currently connect you to our database due to server or user related issues."
+               Margin="50, 105, 0, 0" FontSize="14"/>
+        <Label Content="Please follow these steps to ensure that it is not on your end:" FontWeight="SemiBold"
+               Margin="50, 140, 0, 0" FontSize="13"/>
+        <Label Content="- That you have a stable connection to the internet." Margin="50, 160, 0, 0" FontSize="12"/>
+        <Label Content="- You have made sure that no apps on your system is preventing the connection to our service."
+               Margin="50, 174, 0, 0" FontSize="12"/>
+
+        <TextBlock Text="If you have followed all of these steps and still cannot connect, contact us at tarrinc3@gmail.com and we may be able to help you with your issue."
+               TextWrapping="Wrap" FontWeight="SemiBold" Margin="55, 210, 100, 0" FontSize="13"/>
+
+        <MediaElement Source="C:\Users\Spec\source\Projects\ATM System Project\ATM System\Images\ConnectionLoss.gif" Width="300" Height="140"
+                      Margin="370, 240, 0, 0"/>
+
+        <Button Content="Exit" Width="100" Height="40" Background="GhostWhite" Foreground="MediumPurple" FontWeight="SemiBold" 
+                FontSize="15" Margin="-50, 300, 0, 0" Click="ExitCurrentPage">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock Text="Main cause of error: " Margin="55, 260, 400, 80" FontSize="14" TextDecorations="Underline"/>
+        <TextBlock x:Name="CauseOfIssue" Margin="55, 290, 400, 72" FontSize="13" FontWeight="SemiBold"/>
+    </Grid>
+</Window>

@@ -1,0 +1,173 @@
+﻿<Window x:Class="ATM_System.Pages.MainPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATM_System.Pages"
+        mc:Ignorable="d"
+        Title="MainPage" Height="600" Width="1100" ResizeMode="NoResize" WindowStyle="None" Mouse.MouseDown="MouseLeftClick"
+        Background="WhiteSmoke">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+            <ColumnDefinition Width="0.35*"></ColumnDefinition>
+            <ColumnDefinition Width="0.20*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.33*"></RowDefinition>
+            <RowDefinition Height="0.33*"></RowDefinition>
+            <RowDefinition Height="0.33*"></RowDefinition>
+            <RowDefinition Height="0.33*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Image Source="C:\Users\Spec\source\Projects\ATM System Project\ATM System\Images\MainPage.jpg" Width="1100" Height="700" Grid.ColumnSpan="4" Grid.RowSpan="1"/>
+
+        <Button x:Name="ExitButton" Content="X" Width="62" Height="30" Grid.Row="0" Grid.Column="3" 
+                Margin="148, -124, 0, 0" FontSize="13" Background="Transparent" Click="ExitCurrentPage" BorderBrush="Transparent">
+        </Button>
+        <Button x:Name="MinimizeButton" Content="-" Width="62" Height="34" Grid.Row="0" Grid.Column="3" 
+                Margin="30, -125, 0, 0" FontSize="20" Background="Transparent" Click="MinimizeCurrentPage" BorderBrush="Transparent">
+        </Button>
+
+        <TextBlock Text="Current withdraw limit: " FontSize="13" Foreground="White" FontWeight="Bold" 
+                   Grid.Row="0" Grid.Column="0" Margin="10, 9, 0, 0"/>
+        <TextBlock x:Name="WithdrawLimitText" TextDecorations="Underline" FontSize="13" Foreground="Black" FontWeight="Bold" Grid.Row="0" Grid.Column="0" 
+                   Margin="160, 9, 0, 0"/>
+
+        <TextBlock Text="Card Number: " FontSize="13" Foreground="White" FontWeight="Bold" 
+                   Grid.Row="0" Grid.Column="0" Margin="10, 30, 0, 0"/>
+        <TextBlock x:Name="CardNumber" TextDecorations="Underline" FontSize="13" Foreground="Black" FontWeight="Bold" 
+                   Grid.Row="0" Grid.Column="0" Margin="105, 30 0, 0"/>
+
+        <TextBlock Text="Email: " FontSize="13" Foreground="White" FontWeight="Bold" 
+                   Grid.Row="0" Grid.Column="0" Margin="10, 51, 0, 0"/>
+        <TextBlock x:Name="Email" TextDecorations="Underline" FontSize="13" Foreground="Black" FontWeight="Bold" 
+                   Grid.Row="0" Grid.Column="0" Margin="55, 50, 0, 0"/>
+
+        <TextBlock Text="Current Balance:" Foreground="White" FontWeight="Bold" FontSize="13" 
+                   Grid.Row="0" Grid.Column="0" Margin="10, 80, 0, 0"/>
+        <TextBlock x:Name="CurrentBalance" Text="" Foreground="Black" FontWeight="SemiBold" 
+                   Grid.Row="0" TextDecorations="Underline" FontSize="30" Grid.Column="0" Margin="10, 100, 0, 0"/>
+        
+        <TextBlock Text="Total withdrawn:" Foreground="White" FontWeight="Bold" FontSize="13" 
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="220, 80, 0, 0"/>
+        <TextBlock x:Name="AmountWithDrawn" Text="" Foreground="Black" FontWeight="SemiBold" 
+                   Grid.Row="0" TextDecorations="Underline" FontSize="30" Grid.Column="0" Grid.ColumnSpan="2" Margin="220, 100, 0, 0"/>
+        
+        <TextBlock Text="Total transferred:" Foreground="White" FontWeight="Bold" FontSize="13" 
+                   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="200, 80, 0, 0"/>
+        <TextBlock x:Name="AmountTransferred" Text="" Foreground="Black" FontWeight="SemiBold" 
+                   Grid.Row="0" TextDecorations="Underline" FontSize="30" Grid.Column="0" Grid.ColumnSpan="3" Margin="460, 100, 0, 0"/>
+
+        <TextBlock Text="Recent Activity" Grid.Column="2" Grid.Row="1" Margin="240, 20, 0, 0" FontSize="16"/>
+        <Button x:Name="ClearAll" Content="Clear" Width="60" Height="20" Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" Margin="-155,63, 0, 0" 
+                Background="LightCyan" Click="ClearActivities">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBlock x:Name="ClearAllWarning" Grid.Row="1" Grid.Column="3" Margin="65, 15, 20, 0" Foreground="Red"
+                   TextWrapping="Wrap"/>
+        <Button x:Name="Activity1" Content="(No activity)" Background="#a6f9be" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                Width="310" Height="80" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="2" Margin="215, 40, 0, 0" Padding="10, -15, 0, 0"
+                FontSize="13" FontWeight="Regular">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="Activity2" Content="(No activity)" Background="#a6f9be" VerticalContentAlignment="Top" 
+                HorizontalContentAlignment="Left" Width="310" Height="72" Grid.ColumnSpan="2" Grid.Row="1" 
+                Grid.Column="2" Margin="215, 30, 0, 0" Grid.RowSpan="2" Padding="10, 10, 0, 0" FontSize="13" FontWeight="Regular"/>
+        <Button x:Name="Activity3" Content="(No activity)" Background="#a6f9be" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" 
+                Width="310" Height="72" Grid.ColumnSpan="2" Grid.Row="2" 
+                Grid.Column="2" Margin="215, 22, 0, 0" Padding="10, 10, 0, 0" FontSize="13" FontWeight="Regular"/>
+        <Button x:Name="Activity4" Content="(No activity)" Background="#a6f9be" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" 
+                Width="310" Height="72" Grid.ColumnSpan="2" Grid.Row="2" 
+                Grid.Column="2" Grid.RowSpan="2" Margin="215, 10, 0, 0" Padding="10, 10, 0, 0" FontSize="13" FontWeight="Regular"/>
+        <Button x:Name="Activity5" Content="(No activity)" Background="#a6f9be" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" 
+                Width="310" Height="77" Grid.ColumnSpan="2" Grid.Row="3"
+                Grid.Column="2" Margin="215, 0, 0, 0" Padding="10, 12, 0, 0" FontSize="13" FontWeight="Regular">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock Text="Welcome!" Grid.Row="1" Grid.Column="0" Margin="74, 20, 0, 0" FontSize="16"/>
+        <Button x:Name="DepositMoney" Content="Deposit money" Background="#6cf087" Foreground="Black" Width="150" Height="120" Grid.Row="1" 
+                Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="-230, -72, 0, 0" FontWeight="DemiBold" FontSize="15" Click="ButtonActionsClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ExtractMoney" Content="Withdraw money" Background="#6cf087" Foreground="Black" Width="150" Height="120" Grid.Row="1" 
+                Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="120, -72, 0, 0" FontWeight="DemiBold" FontSize="15" Click="ButtonActionsClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="TransferMoney" Content="Transfer money" Background="#6cf087" Foreground="Black" Width="150" Height="120" Grid.Row="1" 
+                Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="-157, -72, 0, 0" FontWeight="DemiBold" FontSize="15" Click="ButtonActionsClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="WithDrawLimit" Content="Set withdraw limit" Background="#6cf087" Foreground="Black" Width="150" Height="120" Grid.Row="1" 
+                Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="-280, -72, 0, 0" FontWeight="DemiBold" FontSize="15" Click="ButtonActionsClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock x:Name="MoneyLabel" Text="Deposite" Grid.Row="2" Grid.Column="1" Margin="120, 50, 70, 0" FontSize="16" FontWeight="DemiBold"/>
+        
+        <TextBlock Text="Amount:" FontSize="13" FontWeight="SemiBold" Grid.Row="2" Grid.Column="1" Margin="-11, 89, 0, 0"/>
+        <TextBox x:Name="AmountBox" Width="200" Height="30" FontSize="18" Grid.Row="2" Grid.Column="1" Margin="40, 50, 0, 0" 
+                 HorizontalContentAlignment="Center" VerticalAlignment="Center">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <TextBlock x:Name="CardNumberText" Text="Card Number:" FontSize="13" FontWeight="SemiBold" Grid.Row="2" Grid.Column="1" Margin="-45, 125, 0, 0" Visibility="Hidden"/>
+        <TextBox x:Name="CardNumberBox" Width="200" Height="30" FontSize="18" Grid.Row="2" Grid.Column="1"
+                 HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="40, 120, 0, 0" Visibility="Hidden">
+            <TextBox.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <Button x:Name="SubmitButton" Width="100" Height="35" Foreground="Black" Background="#6cf087" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" 
+                Margin="40, 45, 0, 0" Content="Submit" FontSize="15" Click="SubmitButtonClick">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock Text="Found an issue with our service?" FontSize="24" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="35, 50, 0, 0" FontWeight="SemiBold"/>
+        <TextBlock Text="If you identify any issues or bugs, don't hesitate to inform us at tarrinc3@gmail.com. You can get in contact with us in various ways such as checking out our social media!" 
+                   FontSize="14" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="35, 85, 0, 0"/>
+
+        <TextBlock x:Name="AmountWarning" Text="" Grid.Column="2" Grid.Row="2" Margin="10, 86, 150, 0" Foreground="Red" FontSize="14" TextWrapping="Wrap"/>
+    </Grid>
+</Window>
